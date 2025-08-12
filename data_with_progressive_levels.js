@@ -3,25 +3,15 @@ var APP_DATA = {
     {
       "id": "0-kitchen",
       "name": "Kitchen",
+      
       "levels": [
-        {
-          "tileSize": 256,
-          "size": 256,
-          "fallbackOnly": true
-        },
-        {
-          "tileSize": 512,
-          "size": 512
-        },
-        {
-          "tileSize": 512,
-          "size": 1024
-        },
-        {
-          "tileSize": 512,
-          "size": 2048
-        }
+        { "tileSize": 128, "size": 128, "fallbackOnly": true },
+        { "tileSize": 256, "size": 256 },
+        { "tileSize": 512, "size": 512 },
+        { "tileSize": 512, "size": 1024 },
+        { "tileSize": 512, "size": 2048 }
       ],
+
       "faceSize": 2000,
       "initialViewParameters": {
         "pitch": 0,
@@ -41,25 +31,15 @@ var APP_DATA = {
     {
       "id": "1-living-room",
       "name": "Living Room",
+      
       "levels": [
-        {
-          "tileSize": 256,
-          "size": 256,
-          "fallbackOnly": true
-        },
-        {
-          "tileSize": 512,
-          "size": 512
-        },
-        {
-          "tileSize": 512,
-          "size": 1024
-        },
-        {
-          "tileSize": 512,
-          "size": 2048
-        }
+        { "tileSize": 128, "size": 128, "fallbackOnly": true },
+        { "tileSize": 256, "size": 256 },
+        { "tileSize": 512, "size": 512 },
+        { "tileSize": 512, "size": 1024 },
+        { "tileSize": 512, "size": 2048 }
       ],
+
       "faceSize": 2000,
       "initialViewParameters": {
         "pitch": 0,
@@ -91,25 +71,15 @@ var APP_DATA = {
     {
       "id": "2-bedroom",
       "name": "Bedroom",
+      
       "levels": [
-        {
-          "tileSize": 256,
-          "size": 256,
-          "fallbackOnly": true
-        },
-        {
-          "tileSize": 512,
-          "size": 512
-        },
-        {
-          "tileSize": 512,
-          "size": 1024
-        },
-        {
-          "tileSize": 512,
-          "size": 2048
-        }
+        { "tileSize": 128, "size": 128, "fallbackOnly": true },
+        { "tileSize": 256, "size": 256 },
+        { "tileSize": 512, "size": 512 },
+        { "tileSize": 512, "size": 1024 },
+        { "tileSize": 512, "size": 2048 }
       ],
+
       "faceSize": 2000,
       "initialViewParameters": {
         "pitch": 0,
@@ -129,25 +99,15 @@ var APP_DATA = {
     {
       "id": "3-bath",
       "name": "Bath",
+      
       "levels": [
-        {
-          "tileSize": 256,
-          "size": 256,
-          "fallbackOnly": true
-        },
-        {
-          "tileSize": 512,
-          "size": 512
-        },
-        {
-          "tileSize": 512,
-          "size": 1024
-        },
-        {
-          "tileSize": 512,
-          "size": 2048
-        }
+        { "tileSize": 128, "size": 128, "fallbackOnly": true },
+        { "tileSize": 256, "size": 256 },
+        { "tileSize": 512, "size": 512 },
+        { "tileSize": 512, "size": 1024 },
+        { "tileSize": 512, "size": 2048 }
       ],
+
       "faceSize": 2000,
       "initialViewParameters": {
         "pitch": 0,
@@ -167,25 +127,15 @@ var APP_DATA = {
     {
       "id": "4-reception",
       "name": "Reception",
+      
       "levels": [
-        {
-          "tileSize": 256,
-          "size": 256,
-          "fallbackOnly": true
-        },
-        {
-          "tileSize": 512,
-          "size": 512
-        },
-        {
-          "tileSize": 512,
-          "size": 1024
-        },
-        {
-          "tileSize": 512,
-          "size": 2048
-        }
+        { "tileSize": 128, "size": 128, "fallbackOnly": true },
+        { "tileSize": 256, "size": 256 },
+        { "tileSize": 512, "size": 512 },
+        { "tileSize": 512, "size": 1024 },
+        { "tileSize": 512, "size": 2048 }
       ],
+
       "faceSize": 2000,
       "initialViewParameters": {
         "pitch": 0,
@@ -205,25 +155,15 @@ var APP_DATA = {
     {
       "id": "5-corridor",
       "name": "Corridor",
+      
       "levels": [
-        {
-          "tileSize": 256,
-          "size": 256,
-          "fallbackOnly": true
-        },
-        {
-          "tileSize": 512,
-          "size": 512
-        },
-        {
-          "tileSize": 512,
-          "size": 1024
-        },
-        {
-          "tileSize": 512,
-          "size": 2048
-        }
+        { "tileSize": 128, "size": 128, "fallbackOnly": true },
+        { "tileSize": 256, "size": 256 },
+        { "tileSize": 512, "size": 512 },
+        { "tileSize": 512, "size": 1024 },
+        { "tileSize": 512, "size": 2048 }
       ],
+
       "faceSize": 2000,
       "initialViewParameters": {
         "pitch": 0,
