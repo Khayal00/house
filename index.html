@@ -1,126 +1,62 @@
-<!DOCTYPE html>
-<html>
-<head>
-<title>House Design</title>
-<meta charset="utf-8">
-<meta name="viewport" content="target-densitydpi=device-dpi, width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, minimal-ui" />
-<style> @-ms-viewport { width: device-width; } </style>
-<link rel="stylesheet" href="vendor/reset.min.css">
-<link rel="stylesheet" href="style.css">
-</head>
-<body class="multiple-scenes ">
+function goToScene(targetId) {
+  console.log(`🔍 محاولة الانتقال إلى المشهد: ${targetId}`);
 
-<div id="pano"></div>
+  const targetScene = SCENES.find(scene => scene.id === targetId);
 
-<div id="sceneList">
-  <ul class="scenes">
-    
-      <a href="javascript:void(0)" class="scene" data-id="0-kitchen">
-        <li class="text">Kitchen</li>
-      </a>
-    
-      <a href="javascript:void(0)" class="scene" data-id="1-living-room">
-        <li class="text">Living Room</li>
-      </a>
-    
-      <a href="javascript:void(0)" class="scene" data-id="2-bedroom">
-        <li class="text">Bedroom</li>
-      </a>
-    
-      <a href="javascript:void(0)" class="scene" data-id="3-bath">
-        <li class="text">Bath</li>
-      </a>
-    
-      <a href="javascript:void(0)" class="scene" data-id="4-reception">
-        <li class="text">Reception</li>
-      </a>
-    
-      <a href="javascript:void(0)" class="scene" data-id="5-corridor">
-        <li class="text">Corridor</li>
-      </a>
-    
-  </ul>
-</div>
+  if (!targetScene) {
+    console.error(`❌ المشهد "${targetId}" غير موجود في SCENES`);
+    return;
+  }
 
-<div id="titleBar">
-  <h1 class="sceneName"></h1>
-</div>
-
-<a href="javascript:void(0)" id="autorotateToggle">
-  <img class="icon off" src="img/play.png">
-  <img class="icon on" src="img/pause.png">
-</a>
-
-<a href="javascript:void(0)" id="fullscreenToggle">
-  <img class="icon off" src="img/fullscreen.png">
-  <img class="icon on" src="img/windowed.png">
-</a>
-
-<a href="javascript:void(0)" id="sceneListToggle">
-  <img class="icon off" src="img/expand.png">
-  <img class="icon on" src="img/collapse.png">
-</a>
-
-<a href="javascript:void(0)" id="viewUp" class="viewControlButton viewControlButton-1">
-  <img class="icon" src="img/up.png">
-</a>
-<a href="javascript:void(0)" id="viewDown" class="viewControlButton viewControlButton-2">
-  <img class="icon" src="img/down.png">
-</a>
-<a href="javascript:void(0)" id="viewLeft" class="viewControlButton viewControlButton-3">
-  <img class="icon" src="img/left.png">
-</a>
-<a href="javascript:void(0)" id="viewRight" class="viewControlButton viewControlButton-4">
-  <img class="icon" src="img/right.png">
-</a>
-<a href="javascript:void(0)" id="viewIn" class="viewControlButton viewControlButton-5">
-  <img class="icon" src="img/plus.png">
-</a>
-<a href="javascript:void(0)" id="viewOut" class="viewControlButton viewControlButton-6">
-  <img class="icon" src="img/minus.png">
-</a>
-
-<script src="vendor/screenfull.min.js" ></script>
-<script src="vendor/bowser.min.js" ></script>
-<script src="vendor/marzipano.js" ></script>
-
-<script src="data.js"></script>
-<script src="index.js"></script>
-
-<!-- مكتبة WebXR -->
-<script src="https://unpkg.com/webxr-polyfill"></script>
-
-<!-- زر دخول VR -->
-<button id="enter-vr" style="
-  position: absolute;
-  bottom: 20px;
-  right: 20px;
-  padding: 10px 20px;
-  font-size: 18px;
-  background: #0a84ff;
-  color: white;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  z-index: 9999;
-">🎯 دخول VR</button>
-
-<script>
-  const button = document.getElementById('enter-vr');
-  button.addEventListener('click', async () => {
-    if (navigator.xr) {
-      try {
-        const session = await navigator.xr.requestSession('immersive-vr');
-        console.log("VR session started", session);
-        alert("تم الدخول إلى وضع الـ VR (إذا المتصفح يدعمه)");
-      } catch (err) {
-        alert("المتصفح لا يدعم VR أو أنه غير مفعل في الإعدادات.");
+  // التحقق من الصورة
+  fetch(targetScene.src)
+    .then(response => {
+      if (!response.ok) {
+        throw new Error(`❌ تعذر تحميل الصورة: ${targetScene.src}`);
       }
-    } else {
-      alert("WebXR غير مدعوم على هذا الجهاز.");
-    }
-  });
-</script>
+      console.log(`✅ تم العثور على الصورة: ${targetScene.src}`);
+      // استدعاء وظيفة عرض المشهد (ضع الكود الأصلي للتنقل هنا)
+      loadScene(targetScene);
+    })
+    .catch(err => {
+      console.error(err.message);
+    });
+}
 
-</body>
-</html>
+// مثال تعريف SCENES مع استدعاء goToScene
+const SCENES = [
+  { id: "living", name: "Living Room", src: "Living_Room.jpg",
+    hotspots: [
+      { label: "To Kitchen", target: "kitchen", yaw: 45, pitch: 0 },
+      { label: "To Reception", target: "reception", yaw: -45, pitch: 0 },
+      { label: "To Corridor", target: "corridor", yaw: 135, pitch: 0 }
+    ]
+  },
+  { id: "kitchen", name: "Kitchen", src: "Kitchen.jpg",
+    hotspots: [
+      { label: "To Living Room", target: "living", yaw: -90, pitch: 0 }
+    ]
+  },
+  { id: "reception", name: "Reception", src: "Reception.jpg",
+    hotspots: [
+      { label: "To Living Room", target: "living", yaw: 90, pitch: 0 }
+    ]
+  },
+  { id: "corridor", name: "Corridor", src: "Corridor.jpg",
+    hotspots: [
+      { label: "To Bathroom", target: "bathroom", yaw: 45, pitch: 0 },
+      { label: "To Bedroom", target: "bedroom", yaw: -45, pitch: 0 },
+      { label: "To Living Room", target: "living", yaw: 180, pitch: 0 }
+    ]
+  },
+  { id: "bathroom", name: "Bathroom", src: "Bathroom.jpg",
+    hotspots: [
+      { label: "To Corridor", target: "corridor", yaw: 180, pitch: 0 }
+    ]
+  },
+  { id: "bedroom", name: "Bedroom", src: "Bedroom.jpg",
+    hotspots: [
+      { label: "To Corridor", target: "corridor", yaw: 0, pitch: 0 }
+    ]
+  }
+];
